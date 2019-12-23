@@ -1,0 +1,219 @@
+$backgroundDark: #363636;
+$green: #95df71;
+$red: #f04e4e;
+$lightGrey: #848484;
+$offWhite: #e0e0e0;
+
+html {
+	background-color: $backgroundDark;
+	font-family: roboto;
+	color: white;
+	box-sizing: border-box;
+	max-height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.bgRed {
+	background-color: $red;
+}
+
+.bgGreen {
+	background-color: $green;
+}
+
+.bgDark {
+	background-color: $backgroundDark;
+}
+.bgLight {
+	background-color: $offWhite;
+}
+
+
+
+*::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;  
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+h1{
+	margin-top: 75px;
+	text-align: center;
+}
+
+h2{
+	margin-top: 75px;
+	text-align: center;
+}
+
+
+.playerPicker{
+	width: 50%;
+	margin: auto;
+	position: absolute;
+	bottom: 250px;
+	box-sizing: border-box;
+	margin-left: 25%;
+	height: 100px;
+	
+	div{
+		padding: 5px 0px;
+		text-align: center;
+		width: 100%;
+		font-size: 1.2em;
+		
+	}
+}
+
+
+
+#scoreBoard {
+	width: 85%;
+	margin: auto;
+	margin-top: 15px;
+	max-height: 150px;
+	overflow-y: scroll;
+
+	.playerScore {
+		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+	}
+
+	hr {
+		width: 60%;
+		border-color: rgba(255, 255, 255, 0.192);
+		height: 0px;
+	}
+}
+
+#currentScore {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	margin-top: 25px;
+	width: 75%;
+
+	.button {
+		width: 60px;
+		text-align: center;
+	}
+
+	.secondaryButton {
+		border: 1px solid rgba(255, 255, 255, 0.39);
+		border-radius: 5px;
+		padding: 5px;
+	}
+
+	#pendingScore {
+		font-size: 3em;
+	}
+
+	.primaryButton {
+		border: 3px solid white;
+		border-radius: 5px;
+		padding: 5px;
+	}
+}
+
+#input {
+	margin-top: 50px;
+	.topInput {
+		width: 90%;
+		margin: auto;
+		display: grid;
+		grid-template-columns: 1fr 3fr 1fr;
+		.bulsEye {
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+			background-color: $red;
+			margin: auto;
+			box-sizing: border-box;
+			border: $backgroundDark 10px solid;
+		}
+		.throws {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			align-items: center;
+			justify-items: center;
+			padding-left: 20px;
+			padding-right: 20px;
+			.arrowContainer {
+				display: flex;
+				flex-direction: row;
+
+				.arrow {
+					width: 10px;
+					height: 20px;
+					border: 2px solid rgba(255, 255, 255, 0.459);
+				}
+				.arrow1 {
+					transform: skewY(-30deg);
+				}
+				.arrow2 {
+					transform: skewY(30deg);
+				}
+			}
+		}
+		.bigBulsEye {
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+			background-color: $backgroundDark;
+			margin: auto;
+			box-sizing: border-box;
+			border: $green 10px solid;
+		}
+	}
+
+	#bottomInput {
+		background-color: $lightGrey;
+		height: 300px;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		max-width: 100%;
+		overflow-x: scroll;
+
+		.inputContainer {
+			min-width: 110px;
+			.inputNumber {
+				height: 25px;
+				font-size: 1.5em;
+				text-align: center;
+			}
+			.inputTriple {
+				height: 50px;
+			}
+			.inputRegularTop {
+				height: 85px;
+			}
+			.inputDouble {
+				height: 50px;
+			}
+			.inputRegularBottom {
+				height: 85px;
+			}
+		}
+	}
+}
