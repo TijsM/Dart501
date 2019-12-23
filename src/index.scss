@@ -60,6 +60,18 @@ h2{
 	text-align: center;
 }
 
+.buttonConfirm{
+	padding: 5px;
+	border: 3px solid white;
+	width: 100px;
+	text-align: center;
+	border-radius: 3px;
+	margin: auto;
+	margin-top: 50px;
+	background-color: transparent;
+	color: white;
+	font-size: 1em;
+}
 
 .playerPicker{
 	width: 50%;
@@ -75,8 +87,26 @@ h2{
 		text-align: center;
 		width: 100%;
 		font-size: 1.2em;
-		
+	}	
+}
+
+.nameContainer{
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	margin: auto;
+	margin-top: 50px;
+
+	input{
+		background-color:transparent;
+		border: none;
+		border-bottom: 1px solid white;
+		margin-top: 20px;
+		padding: 10px;
+		color: white;
+		text-align: center;
 	}
+	
 }
 
 
