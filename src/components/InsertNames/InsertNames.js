@@ -22,11 +22,8 @@ const InsertNames = props => {
     })
 
     const submitForm = event => {
-        console.log('clicked')
         event.preventDefault();
-
         let counter = 0;
-
         let names = [];
         inputs.forEach(() => {
             counter++;
@@ -34,7 +31,6 @@ const InsertNames = props => {
         })
         
         localStorage.setItem("names", names);
-
         setShouldRedirect(true); 
     }
 
