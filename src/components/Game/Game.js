@@ -17,13 +17,12 @@ const Game = props => {
         names.forEach(el => {
             _scoreBoard.push({
                 name: el,
-                score: 501
+                score: 100
             })
         })
         setScoreBoard(_scoreBoard)
     }, [])
 
-    console.log(throwCount)
 
     let scoreBoardList = null;
     scoreBoardList = scoreBoard.map(el => {
@@ -54,11 +53,28 @@ const Game = props => {
     }
 
     const confirmScore = () => {
-        const newScoreBoard = scoreBoard;
-        newScoreBoard[playerCount].score = newScoreBoard[playerCount].score - totalThrowScore;
+        const newScoreBoard = [...scoreBoard];
+        console.log(newScoreBoard)
 
-        moveToNextPlayer();
-        emptyFields();
+        if(newScoreBoard[playerCount].score - totalThrowScore < 0){
+            moveToNextPlayer()
+            
+            moveToNextPlayer();
+            emptyFields();
+
+            alert('burned')
+        }
+        else if (newScoreBoard[playerCount].score - totalThrowScore === 0){
+            moveToNextPlayer();
+            emptyFields();
+            resetScoreBoard();
+            alert('congrats!')     
+        }
+        else{
+            newScoreBoard[playerCount].score = newScoreBoard[playerCount].score - totalThrowScore;
+            moveToNextPlayer();
+            emptyFields();
+        }
     }
 
     const moveToNextPlayer = () => {
@@ -73,16 +89,23 @@ const Game = props => {
     }
 
     const emptyFields = () => {
-        // let [totalThrowScore, settotalThrowScore] = useState(0)
-        // let [throwScores, setThrowScores] = useState([0, 0, 0])
-        // let [throwCount, setThrowCount] = useState(0)
-
-        // let [scoreBoard, setScoreBoard] = useState([]);
-        // let [playerCount, setPlayerCount] = useState(0)
-
         settotalThrowScore(0);
         setThrowScores([0, 0, 0])
         setThrowCount(0)
+    }
+
+    const resetScoreBoard = () => {   
+        let newScoreboard = [...scoreBoard];
+        newScoreboard = newScoreboard.map(el => {
+            return({
+                name: el.name,
+                score: 100
+            }) 
+        })
+        
+        console.log(newScoreboard)
+
+        setScoreBoard(newScoreboard)
     }
 
     const redo = () => {
@@ -95,15 +118,9 @@ const Game = props => {
         const newScore = oldScore - lastThrowScore
         settotalThrowScore(newScore)
 
-      
-
         let newScores = throwScores;
         newScores[throwCount-1] = 0;
         setThrowScores(newScores)
-
-
-
-
     }
 
 
@@ -114,11 +131,11 @@ const Game = props => {
         if (evenIndex) {
             evenIndex = !evenIndex;
             return (
-                <div className="inputContainer" key={el * Math.random()}>
-                    <div className='inputNumber'>{el}</div>
-                    <div className='inputTriple bgGreen' onClick={() => setOneThrow(el * 3)}></div>
+                <div className='inputContainer' key={el * Math.random()}>
+                    <div className={['inputNumber', el===20?"center20":null].join(' ')}>{el}</div>
+                    <div className='inputTriple bgGreen' onClick={() => setOneThrow(el * 2)}></div>
                     <div className='inputRegularTop bgLight' onClick={() => setOneThrow(el)}></div>
-                    <div className='inputDouble bgGreen' onClick={() => setOneThrow(el * 2)}></div>
+                    <div className='inputDouble bgGreen' onClick={() => setOneThrow(el * 3)}></div>
                     <div className='inputRegularBottom bgLight' onClick={() => setOneThrow(el * 3)}></div>
                 </div>
             )
@@ -126,11 +143,11 @@ const Game = props => {
         else {
             evenIndex = !evenIndex;
             return (
-                <div className="inputContainer" key={el * Math.random()}>
-                    <div className='inputNumber'>{el}</div>
-                    <div className='inputTriple bgRed' onClick={() => setOneThrow(el * 3)} ></div>
+                <div className='inputContainer' key={el * Math.random()}>
+                    <div className={['inputNumber', el===20?"center20":null].join(' ')}>{el}</div>
+                    <div className='inputTriple bgRed' onClick={() => setOneThrow(el * 2)} ></div>
                     <div className='inputRegularTop bgDark' onClick={() => setOneThrow(el)} ></div>
-                    <div className='inputDouble bgRed' onClick={() => setOneThrow(el * 2)} ></div>
+                    <div className='inputDouble bgRed' onClick={() => setOneThrow(el * 3)} ></div>
                     <div className='inputRegularBottom bgDark' onClick={() => setOneThrow(el * 2)} ></div>
                 </div>
             )

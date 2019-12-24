@@ -67,6 +67,16 @@ h2 {
   font-size: 1em;
 }
 
+.backDrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .playerPicker {
   width: 50%;
   margin: auto;
@@ -278,6 +288,11 @@ h2 {
   height: 25px;
   font-size: 1.5em;
   text-align: center;
+}
+
+#input #bottomInput .inputContainer .center20 {
+  color: #363636;
+  background-color: #e0e0e0;
 }
 
 #input #bottomInput .inputContainer .inputTriple {
