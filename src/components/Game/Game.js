@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Aux from '../../hoc/Auxilery/Auxilery';
-import Popup from 'reactjs-popup'
+import Popup from 'reactjs-popup';
+import { Redirect } from "react-router-dom";
+
 
 const Game = props => {
     let [totalThrowScore, settotalThrowScore] = useState(0)
@@ -13,6 +15,9 @@ const Game = props => {
     let [showModal, setShowModal] = useState(false)
     let [winner, setWinner] = useState();
     let [finalScoreBoard, setFinalScoreBOard] = useState({})
+    let [isBurned, setIsBurned] = useState(false)
+
+    let [shouldRedirect, setShouldRedirect] = useState(false);
 
     let names = localStorage.getItem('names');
     names = names.split(',')
@@ -22,11 +27,25 @@ const Game = props => {
         names.forEach(el => {
             _scoreBoard.push({
                 name: el,
-                score: 100
+                score: 501
             })
         })
         setScoreBoard(_scoreBoard)
     }, [])
+
+    useEffect(() => {
+        var centre20 = document.getElementById("centre");
+        if (centre20) {
+            // lastMessage.scrollTop = lastMessage.scrollHeight;
+            centre20.scrollIntoView()
+
+            centre20.scrollIntoView({
+                behavior: 'auto',
+                block: 'center',
+                inline: 'center'
+            });
+        }
+    })
 
 
 
@@ -52,14 +71,35 @@ const Game = props => {
                     {scoreBoardList}
                 </div>
                 <div className='modalButtons'>
-                    <button className="buttonConfirm">
+                    <button
+                        className="buttonConfirm"
+                        onClick={() => startNewGame()}>
                         restart game
                     </button>
-                    <button className="buttonConfirm">
+                    <button className="buttonConfirm"
+                        onClick={() => resetGame()}
+                    >
                         home
                     </button>
                 </div>
             </Aux>
+        </Popup>
+    )
+
+    let burnedModal = (
+        <Popup
+            modal
+            open={isBurned}
+            closeOnDocumentClick={false}
+            className='burned'
+        >
+            <Aux>
+                <h1>you threw too much!</h1>
+                <button className="buttonConfirm"
+                    onClick={() => setIsBurned(false)}
+                >continue</button>
+            </Aux>
+
         </Popup>
     )
 
@@ -90,15 +130,14 @@ const Game = props => {
             moveToNextPlayer();
             emptyFields();
 
-            alert('burned')
+            setIsBurned(true)
         }
         else if (newScoreBoard[playerCount].score - totalThrowScore === 0) {
+            newScoreBoard[playerCount].score = newScoreBoard[playerCount].score - totalThrowScore;
             setWinner(scoreBoard[playerCount].name)
             setShowModal(true)
             moveToNextPlayer();
             emptyFields();
-            resetScoreBoard();
-            
         }
         else {
             newScoreBoard[playerCount].score = newScoreBoard[playerCount].score - totalThrowScore;
@@ -129,30 +168,42 @@ const Game = props => {
         newScoreboard = newScoreboard.map(el => {
             return ({
                 name: el.name,
-                score: 100
+                score: 501
             })
         })
-
-        console.log(newScoreboard)
-
         setScoreBoard(newScoreboard)
     }
 
     const redo = () => {
-        const oldThrowCount = throwCount;
-        const newThrowCount = oldThrowCount - 1;
-        setThrowCount(newThrowCount)
+        if (throwCount !== 0) {
+            const oldThrowCount = throwCount;
+            const newThrowCount = oldThrowCount - 1;
+            setThrowCount(newThrowCount)
 
-        const lastThrowScore = throwScores[throwCount - 1]
-        const oldScore = totalThrowScore;
-        const newScore = oldScore - lastThrowScore
-        settotalThrowScore(newScore)
+            const lastThrowScore = throwScores[throwCount - 1]
+            const oldScore = totalThrowScore;
+            const newScore = oldScore - lastThrowScore
+            settotalThrowScore(newScore)
 
-        let newScores = throwScores;
-        newScores[throwCount - 1] = 0;
-        setThrowScores(newScores)
+            let newScores = throwScores;
+            newScores[throwCount - 1] = 0;
+            setThrowScores(newScores)
+        }
     }
 
+    const startNewGame = () => {
+        resetScoreBoard();
+        setShowModal(false)
+    }
+
+    const resetGame = () => {
+        setShouldRedirect(true);
+    }
+
+    let redirect = null;
+    if (shouldRedirect) {
+        redirect = <Redirect to={`/`} />
+    }
 
     const boardNumbers = [3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3]
     let evenIndex = false;
@@ -161,7 +212,7 @@ const Game = props => {
         if (evenIndex) {
             evenIndex = !evenIndex;
             return (
-                <div className='inputContainer' key={el * Math.random()}>
+                <div id={el === 20 ? 'centre' : null} className='inputContainer' key={el * Math.random()}>
                     <div className={['inputNumber', el === 20 ? "center20" : null].join(' ')}>{el}</div>
                     <div className='inputTriple bgGreen' onClick={() => setOneThrow(el * 2)}></div>
                     <div className='inputRegularTop bgLight' onClick={() => setOneThrow(el)}></div>
@@ -173,7 +224,7 @@ const Game = props => {
         else {
             evenIndex = !evenIndex;
             return (
-                <div className='inputContainer' key={el * Math.random()}>
+                <div id={el === 20 ? 'centre' : null} className='inputContainer' key={el * Math.random()}>
                     <div className={['inputNumber', el === 20 ? "center20" : null].join(' ')}>{el}</div>
                     <div className='inputTriple bgRed' onClick={() => setOneThrow(el * 2)} ></div>
                     <div className='inputRegularTop bgDark' onClick={() => setOneThrow(el)} ></div>
@@ -190,6 +241,10 @@ const Game = props => {
             <section id="scoreBoard">
                 {scoreBoardList}
             </section>
+            <section id="playingPlayer">
+                playing: {names[playerCount]}
+
+            </section>
             <section id='currentScore'>
                 <div className="button secondaryButton" onClick={() => redo()}>
                     redo
@@ -201,6 +256,7 @@ const Game = props => {
                     confirm
                 </div>
             </section>
+
             <section id="input">
                 <article className="topInput" >
                     <div className="bulsEye" onClick={() => setOneThrow(50)}>
@@ -243,6 +299,8 @@ const Game = props => {
                 </article>
             </section>
             {modal}
+            {burnedModal}
+            {redirect}
         </Aux>
     )
 }

@@ -135,6 +135,16 @@ h2 {
 	}
 }
 
+#playingPlayer{
+	color: white;
+	font-size: 1.4em;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	margin-top: 25px;
+	text-align: center;
+}
+
 #currentScore {
 	display: flex;
 	flex-direction: row;
@@ -258,6 +268,7 @@ h2 {
 		}
 	}
 }
+
 
 .popup-content {
 	background-color: $backgroundDark !important;
