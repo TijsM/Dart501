@@ -59,7 +59,7 @@ h2 {
 .buttonConfirm {
 	padding: 5px;
 	border: 3px solid white;
-	width: 100px;
+	width: 150px;
 	text-align: center;
 	border-radius: 3px;
 	margin: auto;
@@ -256,5 +256,41 @@ h2 {
 				height: 85px;
 			}
 		}
+	}
+}
+
+.popup-content {
+	background-color: $backgroundDark !important;
+	border: none !important;
+	border-radius: 5px !important;
+	width: 90% !important;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	h1{
+		margin-top: 5px;
+	}
+
+	.modalScoreBoard{
+		width: 75%;
+		margin:  0px auto;
+		margin-bottom: 75px;
+		div{
+			margin: 5px;
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 2.5px;
+		}
+	}
+	
+	.modalButtons{
+		display: flex;
+		width: 100%;
+		flex-direction: row;
+		position: absolute;
+		bottom: 15px;
+
 	}
 }

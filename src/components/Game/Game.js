@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Aux from '../../hoc/Auxilery/Auxilery';
+import Popup from 'reactjs-popup'
 
 const Game = props => {
     let [totalThrowScore, settotalThrowScore] = useState(0)
@@ -8,6 +9,10 @@ const Game = props => {
 
     let [scoreBoard, setScoreBoard] = useState([]);
     let [playerCount, setPlayerCount] = useState(0)
+
+    let [showModal, setShowModal] = useState(false)
+    let [winner, setWinner] = useState();
+    let [finalScoreBoard, setFinalScoreBOard] = useState({})
 
     let names = localStorage.getItem('names');
     names = names.split(',')
@@ -24,6 +29,7 @@ const Game = props => {
     }, [])
 
 
+
     let scoreBoardList = null;
     scoreBoardList = scoreBoard.map(el => {
         return (
@@ -34,6 +40,28 @@ const Game = props => {
 
         )
     })
+
+    let modal = (
+        <Popup
+            modal
+            open={showModal}
+        >
+            <Aux>
+                <h1>Congrats {winner}!</h1>
+                <div className='modalScoreBoard'>
+                    {scoreBoardList}
+                </div>
+                <div className='modalButtons'>
+                    <button className="buttonConfirm">
+                        restart game
+                    </button>
+                    <button className="buttonConfirm">
+                        home
+                    </button>
+                </div>
+            </Aux>
+        </Popup>
+    )
 
     const setOneThrow = (throwValue) => {
         if (throwCount <= 2) {
@@ -56,21 +84,23 @@ const Game = props => {
         const newScoreBoard = [...scoreBoard];
         console.log(newScoreBoard)
 
-        if(newScoreBoard[playerCount].score - totalThrowScore < 0){
+        if (newScoreBoard[playerCount].score - totalThrowScore < 0) {
             moveToNextPlayer()
-            
+
             moveToNextPlayer();
             emptyFields();
 
             alert('burned')
         }
-        else if (newScoreBoard[playerCount].score - totalThrowScore === 0){
+        else if (newScoreBoard[playerCount].score - totalThrowScore === 0) {
+            setWinner(scoreBoard[playerCount].name)
+            setShowModal(true)
             moveToNextPlayer();
             emptyFields();
             resetScoreBoard();
-            alert('congrats!')     
+            
         }
-        else{
+        else {
             newScoreBoard[playerCount].score = newScoreBoard[playerCount].score - totalThrowScore;
             moveToNextPlayer();
             emptyFields();
@@ -94,15 +124,15 @@ const Game = props => {
         setThrowCount(0)
     }
 
-    const resetScoreBoard = () => {   
+    const resetScoreBoard = () => {
         let newScoreboard = [...scoreBoard];
         newScoreboard = newScoreboard.map(el => {
-            return({
+            return ({
                 name: el.name,
                 score: 100
-            }) 
+            })
         })
-        
+
         console.log(newScoreboard)
 
         setScoreBoard(newScoreboard)
@@ -119,7 +149,7 @@ const Game = props => {
         settotalThrowScore(newScore)
 
         let newScores = throwScores;
-        newScores[throwCount-1] = 0;
+        newScores[throwCount - 1] = 0;
         setThrowScores(newScores)
     }
 
@@ -132,7 +162,7 @@ const Game = props => {
             evenIndex = !evenIndex;
             return (
                 <div className='inputContainer' key={el * Math.random()}>
-                    <div className={['inputNumber', el===20?"center20":null].join(' ')}>{el}</div>
+                    <div className={['inputNumber', el === 20 ? "center20" : null].join(' ')}>{el}</div>
                     <div className='inputTriple bgGreen' onClick={() => setOneThrow(el * 2)}></div>
                     <div className='inputRegularTop bgLight' onClick={() => setOneThrow(el)}></div>
                     <div className='inputDouble bgGreen' onClick={() => setOneThrow(el * 3)}></div>
@@ -144,7 +174,7 @@ const Game = props => {
             evenIndex = !evenIndex;
             return (
                 <div className='inputContainer' key={el * Math.random()}>
-                    <div className={['inputNumber', el===20?"center20":null].join(' ')}>{el}</div>
+                    <div className={['inputNumber', el === 20 ? "center20" : null].join(' ')}>{el}</div>
                     <div className='inputTriple bgRed' onClick={() => setOneThrow(el * 2)} ></div>
                     <div className='inputRegularTop bgDark' onClick={() => setOneThrow(el)} ></div>
                     <div className='inputDouble bgRed' onClick={() => setOneThrow(el * 3)} ></div>
@@ -170,7 +200,6 @@ const Game = props => {
                 <div className="button primaryButton" onClick={() => confirmScore()}>
                     confirm
                 </div>
-
             </section>
             <section id="input">
                 <article className="topInput" >
@@ -213,6 +242,7 @@ const Game = props => {
                     {bottomInputs}
                 </article>
             </section>
+            {modal}
         </Aux>
     )
 }
