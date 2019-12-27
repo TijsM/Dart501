@@ -14,8 +14,9 @@ const Game = props => {
 
     let [showModal, setShowModal] = useState(false)
     let [winner, setWinner] = useState();
-    let [finalScoreBoard, setFinalScoreBOard] = useState({})
     let [isBurned, setIsBurned] = useState(false)
+
+    let [showDemo, setShowDemo] = useState(true)
 
     let [shouldRedirect, setShouldRedirect] = useState(false);
 
@@ -98,6 +99,23 @@ const Game = props => {
                 <button className="buttonConfirm"
                     onClick={() => setIsBurned(false)}
                 >continue</button>
+            </Aux>
+
+        </Popup>
+    )
+
+    let demo = (
+        <Popup
+            modal
+            open={showDemo}
+            closeOnDocumentClick={false}
+            className='demo'
+        >
+            <Aux>
+                <img src="demo.gif"></img>
+                <button className="buttonConfirm"
+                    onClick={() => setShowDemo(false)}
+                >start the game</button>
             </Aux>
 
         </Popup>
@@ -298,6 +316,7 @@ const Game = props => {
                     {bottomInputs}
                 </article>
             </section>
+            {demo}
             {modal}
             {burnedModal}
             {redirect}

@@ -7,11 +7,15 @@ html {
   max-height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 .bgRed {
@@ -371,5 +375,15 @@ h2 {
           flex-direction: row;
   position: absolute;
   bottom: 15px;
+}
+
+.demo-content {
+  height: 95% !important;
+  width: 95% !important;
+}
+
+.demo-content img {
+  width: 80%;
+  margin: auto;
 }
 /*# sourceMappingURL=index.css.map */
