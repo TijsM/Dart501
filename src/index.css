@@ -383,7 +383,12 @@ h2 {
 }
 
 .demo-content img {
-  width: 80%;
+  width: 60%;
   margin: auto;
+  border: white 1px solid;
+}
+
+.burned-content {
+  height: 200px !important;
 }
 /*# sourceMappingURL=index.css.map */

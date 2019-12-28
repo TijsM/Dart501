@@ -46,7 +46,7 @@ const Game = props => {
                 inline: 'center'
             });
         }
-    })
+    },[])
 
 
 
@@ -112,6 +112,7 @@ const Game = props => {
             className='demo'
         >
             <Aux>
+                <h1>how to use: </h1>
                 <img src="demo.gif"></img>
                 <button className="buttonConfirm"
                     onClick={() => setShowDemo(false)}
