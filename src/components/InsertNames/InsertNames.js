@@ -18,6 +18,7 @@ const InsertNames = props => {
             key={counter}
             placeholder={`player${counter}`}
             name={`name${counter}`}
+            className='neoInput'
         />
     })
 
@@ -49,7 +50,7 @@ const InsertNames = props => {
             <form id='namesForm' className='nameContainer'>
                 {jsxInput}
 
-                <button className='buttonConfirm' onClick={event => submitForm(event)}>Confirm</button>
+                <button className='buttonConfirm neomorphism' onClick={event => submitForm(event)}>Confirm</button>
             </form>
 
             {redirect}

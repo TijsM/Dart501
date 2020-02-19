@@ -10,6 +10,7 @@ html {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  letter-spacing: 1.5px;
 }
 
 body {
@@ -55,20 +56,42 @@ h1 {
 
 h2 {
   margin-top: 75px;
+  margin-bottom: 100px;
   text-align: center;
 }
 
-.buttonConfirm {
-  padding: 5px;
-  border: 3px solid white;
-  width: 150px;
+.neomorphism {
+  -webkit-box-shadow: #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
+          box-shadow: #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
+  border-radius: 15px;
+}
+
+.neoInput {
+  -webkit-box-shadow: inset #262626 0px 0px 0px 0px,inset #2a2a2a 4px 4px 8px, inset #4d4d4d -4px -4px 8px;
+          box-shadow: inset #262626 0px 0px 0px 0px,inset #2a2a2a 4px 4px 8px, inset #4d4d4d -4px -4px 8px;
+  border-radius: 15px;
+}
+
+.button {
+  width: 60px;
   text-align: center;
-  border-radius: 3px;
+}
+
+.primaryButton {
+  padding: 15px !important;
+}
+
+.buttonConfirm {
+  border: none;
+  background-color: #363636;
   margin: auto;
-  margin-top: 50px;
-  background-color: transparent;
+  width: 150px;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 15px;
   color: white;
-  font-size: 1em;
+  margin-top: 25px;
 }
 
 .backDrop {
@@ -82,21 +105,23 @@ h2 {
 }
 
 .playerPicker {
-  width: 50%;
+  width: 50px;
+  margin: auto;
   margin: auto;
   position: absolute;
-  bottom: 250px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-left: 25%;
   height: 100px;
+  width: 100%;
 }
 
 .playerPicker div {
-  padding: 5px 0px;
+  margin: auto;
+  width: 150px;
+  padding: 10px 5px;
   text-align: center;
-  width: 100%;
   font-size: 1.2em;
+  margin-bottom: 15px;
 }
 
 .nameContainer {
@@ -115,11 +140,14 @@ h2 {
 .nameContainer input {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid white;
   margin-top: 20px;
   padding: 10px;
   color: white;
   text-align: center;
+}
+
+.nameContainer input:focus {
+  outline: none;
 }
 
 #scoreBoard {
@@ -127,6 +155,7 @@ h2 {
   margin: auto;
   margin-top: 15px;
   max-height: 150px;
+  padding: 20px;
   overflow-y: scroll;
 }
 
@@ -177,25 +206,8 @@ h2 {
   width: 75%;
 }
 
-#currentScore .button {
-  width: 60px;
-  text-align: center;
-}
-
-#currentScore .secondaryButton {
-  border: 1px solid rgba(255, 255, 255, 0.39);
-  border-radius: 5px;
-  padding: 5px;
-}
-
 #currentScore #pendingScore {
   font-size: 3em;
-}
-
-#currentScore .primaryButton {
-  border: 3px solid white;
-  border-radius: 5px;
-  padding: 5px;
 }
 
 #input {
@@ -212,7 +224,7 @@ h2 {
   -ms-grid-columns: 1fr 3fr 1fr;
       grid-template-columns: 1fr 3fr 1fr;
   position: absolute;
-  bottom: 325px;
+  bottom: 285px;
   width: 80%;
   margin-left: 10%;
 }
@@ -276,14 +288,18 @@ h2 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: #95df71 10px solid;
+  box-sizing: border-box;
 }
 
 #input #bottomInput {
   background-color: #848484;
-  height: 300px;
+  height: 260px;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 95%;
+  margin-left: 2.5%;
+  overflow-y: hidden;
+  margin-bottom: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -300,9 +316,12 @@ h2 {
 }
 
 #input #bottomInput .inputContainer .inputNumber {
-  height: 25px;
+  height: 40px;
   font-size: 1.5em;
   text-align: center;
+  padding-top: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 #input #bottomInput .inputContainer .center20 {
@@ -311,19 +330,19 @@ h2 {
 }
 
 #input #bottomInput .inputContainer .inputTriple {
-  height: 50px;
+  height: 35px;
 }
 
 #input #bottomInput .inputContainer .inputRegularTop {
-  height: 85px;
+  height: 75px;
 }
 
 #input #bottomInput .inputContainer .inputDouble {
-  height: 50px;
+  height: 35px;
 }
 
 #input #bottomInput .inputContainer .inputRegularBottom {
-  height: 85px;
+  height: 75px;
 }
 
 .popup-content {

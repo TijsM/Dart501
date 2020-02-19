@@ -16,7 +16,7 @@ const Game = props => {
     let [winner, setWinner] = useState();
     let [isBurned, setIsBurned] = useState(false)
 
-    let [showDemo, setShowDemo] = useState(true)
+    let [showDemo, setShowDemo] = useState(false)
 
     let [shouldRedirect, setShouldRedirect] = useState(false);
 
@@ -57,7 +57,6 @@ const Game = props => {
                 <span>{el.name}</span>
                 <span>{el.score}</span>
             </div>
-
         )
     })
 
@@ -113,7 +112,7 @@ const Game = props => {
         >
             <Aux>
                 <h1>how to use: </h1>
-                <img src="demo.gif"></img>
+                <img src="demo.gif" alt='gif that gives a demo for the application'></img>
                 <button className="buttonConfirm"
                     onClick={() => setShowDemo(false)}
                 >start the game</button>
@@ -257,7 +256,7 @@ const Game = props => {
 
     return (
         <Aux>
-            <section id="scoreBoard">
+            <section id="scoreBoard" className="neomorphism">
                 {scoreBoardList}
             </section>
             <section id="playingPlayer">
@@ -265,20 +264,20 @@ const Game = props => {
 
             </section>
             <section id='currentScore'>
-                <div className="button secondaryButton" onClick={() => redo()}>
+                <div className="button primaryButton neomorphism " onClick={() => redo()}>
                     redo
                 </div>
                 <div id="pendingScore">
                     {totalThrowScore}
                 </div>
-                <div className="button primaryButton" onClick={() => confirmScore()}>
+                <div className="button primaryButton neomorphism" onClick={() => confirmScore()}>
                     confirm
                 </div>
             </section>
 
             <section id="input">
                 <article className="topInput" >
-                    <div className="bulsEye" onClick={() => setOneThrow(50)}>
+                    <div className="bulsEye neomorphism" onClick={() => setOneThrow(50)}>
                     </div>
                     <div className="throws">
                         <div>
@@ -310,10 +309,10 @@ const Game = props => {
                             throwScores[2]
                         }
                     </div>
-                    <div className="bigBulsEye" onClick={() => setOneThrow(25)}>
+                    <div className="bigBulsEye neomorphism" onClick={() => setOneThrow(25)}>
                     </div>
                 </article>
-                <article id="bottomInput">
+                <article id="bottomInput" className="neomorphism">
                     {bottomInputs}
                 </article>
             </section>
