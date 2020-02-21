@@ -6,8 +6,8 @@ $offWhite: #e0e0e0;
 
 html {
 	background-color: $backgroundDark;
-	font-family: roboto;
-	color: white;
+	font-family: 'Sunflower', ;
+	color: $offWhite;
 	box-sizing: border-box;
 	max-height: 100vh;
 	box-sizing: border-box;
@@ -63,13 +63,12 @@ h2 {
 }
 
 .neomorphism {
-	box-shadow: #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
+	box-shadow: #262626 0px 0px 0px 0px, #2e2e2e 4px 4px 8px, #3f3f3f -2px -2px 4px;
 	border-radius: 15px;
 }
 
 .neoInput{
-	box-shadow: inset #262626 0px 0px 0px 0px,inset #2a2a2a 4px 4px 8px, inset #4d4d4d -4px -4px 8px;
-	// box-shadow: inset #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
+	box-shadow: inset #262626 0px 0px 0px 0px,inset #2e2e2e 4px 4px 8px, inset #3f3f3f -2px -2px 4px;
 	border-radius: 15px;
 
 }
@@ -94,7 +93,7 @@ h2 {
 	text-align: center;
 	font-size: 1.2em;
 	margin-bottom: 15px;
-	color: white;
+	color:$offWhite;
 	margin-top: 25px;
 }
 
@@ -140,7 +139,7 @@ h2 {
 		border: none;
 		margin-top: 20px;
 		padding: 10px;
-		color: white;
+		color: $offWhite;
 		text-align: center;
 	}
 	input:focus {
@@ -171,7 +170,7 @@ h2 {
 }
 
 #playingPlayer {
-	color: white;
+	color: $offWhite;
 	font-size: 1.4em;
 	width: 100%;
 	box-sizing: border-box;

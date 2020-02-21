@@ -45,7 +45,7 @@ const InsertNames = props => {
     return (
         <Aux>
             <h1>
-                What are your beatiful names
+                What are your beautiful names
           </h1>
             <form id='namesForm' className='nameContainer'>
                 {jsxInput}

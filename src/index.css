@@ -1,7 +1,7 @@
 html {
   background-color: #363636;
-  font-family: roboto;
-  color: white;
+  font-family: "Sunflower";
+  color: #e0e0e0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-height: 100vh;
@@ -61,14 +61,14 @@ h2 {
 }
 
 .neomorphism {
-  -webkit-box-shadow: #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
-          box-shadow: #262626 0px 0px 0px 0px, #2a2a2a 4px 4px 8px, #4d4d4d -4px -4px 8px;
+  -webkit-box-shadow: #262626 0px 0px 0px 0px, #2e2e2e 4px 4px 8px, #3f3f3f -2px -2px 4px;
+          box-shadow: #262626 0px 0px 0px 0px, #2e2e2e 4px 4px 8px, #3f3f3f -2px -2px 4px;
   border-radius: 15px;
 }
 
 .neoInput {
-  -webkit-box-shadow: inset #262626 0px 0px 0px 0px,inset #2a2a2a 4px 4px 8px, inset #4d4d4d -4px -4px 8px;
-          box-shadow: inset #262626 0px 0px 0px 0px,inset #2a2a2a 4px 4px 8px, inset #4d4d4d -4px -4px 8px;
+  -webkit-box-shadow: inset #262626 0px 0px 0px 0px,inset #2e2e2e 4px 4px 8px, inset #3f3f3f -2px -2px 4px;
+          box-shadow: inset #262626 0px 0px 0px 0px,inset #2e2e2e 4px 4px 8px, inset #3f3f3f -2px -2px 4px;
   border-radius: 15px;
 }
 
@@ -90,7 +90,7 @@ h2 {
   text-align: center;
   font-size: 1.2em;
   margin-bottom: 15px;
-  color: white;
+  color: #e0e0e0;
   margin-top: 25px;
 }
 
@@ -142,7 +142,7 @@ h2 {
   border: none;
   margin-top: 20px;
   padding: 10px;
-  color: white;
+  color: #e0e0e0;
   text-align: center;
 }
 
@@ -177,7 +177,7 @@ h2 {
 }
 
 #playingPlayer {
-  color: white;
+  color: #e0e0e0;
   font-size: 1.4em;
   width: 100%;
   -webkit-box-sizing: border-box;
