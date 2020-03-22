@@ -129,6 +129,18 @@ const Game = props => {
     console.log(newScoreBoard);
     window.navigator.vibrate(300);
 
+    var centre20 = document.getElementById("centre");
+    if (centre20) {
+      // lastMessage.scrollTop = lastMessage.scrollHeight;
+      centre20.scrollIntoView();
+
+      centre20.scrollIntoView({
+        behavior: "auto",
+        block: "center",
+        inline: "center"
+      });
+    }
+
     if (newScoreBoard[playerCount].score - totalThrowScore < 0) {
       moveToNextPlayer();
 
@@ -316,7 +328,7 @@ const Game = props => {
         <div id="pendingScore">
           {totalThrowScore}
           <div>
-            to go: 
+            to go:
             {scoreBoard[playerCount]
               ? scoreBoard[playerCount].score - totalThrowScore
               : console.log("loading")}
