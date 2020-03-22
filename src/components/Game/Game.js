@@ -19,6 +19,8 @@ const Game = props => {
 
   let [shouldRedirect, setShouldRedirect] = useState(false);
 
+  let [lastThrowDouble, setlastThrowDouble] = useState(false);
+
   let names = localStorage.getItem("names");
   names = names.split(",");
 
@@ -82,7 +84,7 @@ const Game = props => {
       className="burned"
     >
       <Aux>
-        <h1>you threw too much!</h1>
+        <h1>Burned! </h1>
         <button className="buttonConfirm" onClick={() => setIsBurned(false)}>
           continue
         </button>
@@ -105,7 +107,8 @@ const Game = props => {
     </Popup>
   );
 
-  const setOneThrow = throwValue => {
+  const setOneThrow = (throwValue, isDouble = false) => {
+    setlastThrowDouble(isDouble);
     window.navigator.vibrate(35);
 
     if (throwCount <= 2) {
@@ -141,6 +144,8 @@ const Game = props => {
       });
     }
 
+    if (lastThrowDouble) {
+    }
     if (newScoreBoard[playerCount].score - totalThrowScore < 0) {
       moveToNextPlayer();
 
@@ -149,12 +154,21 @@ const Game = props => {
 
       setIsBurned(true);
     } else if (newScoreBoard[playerCount].score - totalThrowScore === 0) {
-      newScoreBoard[playerCount].score =
-        newScoreBoard[playerCount].score - totalThrowScore;
-      setWinner(scoreBoard[playerCount].name);
-      setShowModal(true);
-      moveToNextPlayer();
-      emptyFields();
+      if (lastThrowDouble) {
+        newScoreBoard[playerCount].score =
+          newScoreBoard[playerCount].score - totalThrowScore;
+        setWinner(scoreBoard[playerCount].name);
+        setShowModal(true);
+        moveToNextPlayer();
+        emptyFields();
+      } else {
+        moveToNextPlayer();
+
+        moveToNextPlayer();
+        emptyFields();
+
+        setIsBurned(true);
+      }
     } else {
       newScoreBoard[playerCount].score =
         newScoreBoard[playerCount].score - totalThrowScore;
@@ -261,15 +275,15 @@ const Game = props => {
             {el}
           </div>
           <div
-            className="inputTriple bgGreen"
-            onClick={() => setOneThrow(el * 2)}
+            className="inputDouble bgGreen"
+            onClick={() => setOneThrow(el * 2, true)}
           ></div>
           <div
             className="inputRegularTop bgLight"
             onClick={() => setOneThrow(el)}
           ></div>
           <div
-            className="inputDouble bgGreen"
+            className="inputTriple bgGreen"
             onClick={() => setOneThrow(el * 3)}
           ></div>
           <div
@@ -292,15 +306,15 @@ const Game = props => {
             {el}
           </div>
           <div
-            className="inputTriple bgRed"
-            onClick={() => setOneThrow(el * 2)}
+            className="inputDouble bgRed"
+            onClick={() => setOneThrow(el * 2, true)}
           ></div>
           <div
             className="inputRegularTop bgDark"
             onClick={() => setOneThrow(el)}
           ></div>
           <div
-            className="inputDouble bgRed"
+            className="inputTriple bgRed"
             onClick={() => setOneThrow(el * 3)}
           ></div>
           <div
