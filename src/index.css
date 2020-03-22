@@ -150,6 +150,17 @@ h2 {
   outline: none;
 }
 
+.nameContainer .playbuttonContainer {
+  margin-top: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nameContainer .playbuttonContainer button {
+  margin: 20px;
+}
+
 #scoreBoard {
   width: 85%;
   margin: auto;

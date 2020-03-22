@@ -28,7 +28,7 @@ const Game = props => {
         names.forEach(el => {
             _scoreBoard.push({
                 name: el,
-                score: 501
+                score: localStorage.getItem('startScore')
             })
         })
         setScoreBoard(_scoreBoard)

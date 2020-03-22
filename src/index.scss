@@ -145,6 +145,15 @@ h2 {
 	input:focus {
 		outline: none;
 	}
+
+	.playbuttonContainer{
+		margin-top: 45px;
+		display: flex;
+
+		button{
+			margin: 20px;
+		}
+	}
 }
 
 #scoreBoard {
