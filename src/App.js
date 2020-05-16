@@ -13,8 +13,6 @@ const App = props => {
       <Route path="/insertNames/:amount" component={InsertNames} />
       <Route path="/game" component={Game} />
       <Route path="/" component={AmountOfPlayers} />
-
-      {/* <Route component={AmountOfPlayers} /> */}
     </Switch>
   );
 
